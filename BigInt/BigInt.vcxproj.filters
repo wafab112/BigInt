@@ -18,9 +18,15 @@
     <ClInclude Include="UBigInt.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="array_utils.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="types.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Quelle.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="constructors.cpp">

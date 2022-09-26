@@ -4,6 +4,7 @@
 #include <random>
 #include <chrono>
 
+// finding the lenght of the period, of the reciprical of n
 void period_length(const UBigInt& n, UBigInt& out) {
 	UBigInt rest{};
 	UBigInt t{ 1 };
@@ -25,6 +26,8 @@ void period_length(const UBigInt& n, UBigInt& out) {
 }
 
 int main() {
+
+	// Just testing some random operations
 	auto t1 = std::chrono::high_resolution_clock::now();
 	UBigInt out{};
 	UBigInt in{ "100019\0" };
@@ -37,17 +40,6 @@ int main() {
 	std::cout << "Solution: " << out << "\n";
 	std::cout << "Duration: " << ms_int.count();
 
-	//UBigInt test{ 65535 };
-	//test.lsh(0);
-
-	/*
-	uint8_t arrX[]{ 219, 6, 0 };
-	UBigInt x{arrX, 3};
-	uint8_t arrY[]{ 255, 255, 0, 0, 0, 0, 0, 0, 0 };
-	UBigInt y{arrY, 9};
-
-	x.smaller_than(y);
-	*/
 	return 0;
 }
 
