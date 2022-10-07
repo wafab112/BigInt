@@ -1,4 +1,3 @@
-#pragma once
 #include "array_utils.h"
 #include "UBigInt.h"
 

@@ -1,4 +1,3 @@
-#pragma once
 #include "UBigInt.h"
 #include <string>
 #include <iostream>
