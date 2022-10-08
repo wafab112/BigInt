@@ -32,17 +32,28 @@ ${BDIR}/extras.o: ${WDIR}/extras.cpp ${HEADERS}
 	${CXX} ${FLAGS} -c $< -o $@
 
 TEST_PATH := ./tests
+TEST_SRC := ${TEST_PATH}/src
+TEST_INCLUDES := ${TEST_SRC}/include
+TEST_LIBS := ${TEST_PATH}/lib
+TEST_TARGET := ${TEST_PATH}/run
+
 TESTS = test_constructors.cpp
 
-${TEST_PATH}/bigint.a: all
-	cp ${TARGET} ${TEST_PATH}
-	cp ${BDIR}/include/* ${TEST_PATH}
+${TEST_LIBS}/bigint.a: all
+	mkdir -p ${TEST_LIBS}
+	cp ${TARGET} ${TEST_LIBS}
+	mkdir -p ${TEST_INCLUDES}
+	cp ${BDIR}/include/* ${TEST_INCLUDES}
+	cp doctest.h ${TEST_INCLUDES}
 
-${TEST_PATH}/run: ${TEST_PATH}/main_test.cpp $(addprefix ${TEST_PATH}/,${TESTS}) ${TEST_PATH}/bigint.a
-	${CXX} ${FLAGS} -o $@ $< ${TEST_PATH}/bigint.a
+${TEST_TARGET}: ${TEST_SRC}/main_test.cpp $(addprefix ${TEST_SRC}/,${TESTS}) ${TEST_LIBS}/bigint.a
+	${CXX} ${FLAGS} -o $@ $< ${TEST_LIBS}/bigint.a
 
-test: ${TEST_PATH}/run
-	${TEST_PATH}/run
+test: ${TEST_TARGET}
+	${TEST_TARGET}
 
 clean:
 	rm -r build/*
+	rm ${TEST_TARGET}
+	rm -r ${TEST_LIBS}
+	rm -r ${TEST_INCLUDES}
