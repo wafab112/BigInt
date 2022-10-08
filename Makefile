@@ -38,7 +38,7 @@ ${TEST_PATH}/bigint.a: all
 	cp ${TARGET} ${TEST_PATH}
 	cp ${BDIR}/include/* ${TEST_PATH}
 
-${TEST_PATH}/run: ${TEST_PATH}/main_test.cpp $(addprefix ${TEST_PATH}/,${TESTS})
+${TEST_PATH}/run: ${TEST_PATH}/main_test.cpp $(addprefix ${TEST_PATH}/,${TESTS}) ${TEST_PATH}/bigint.a
 	${CXX} ${FLAGS} -o $@ $< ${TEST_PATH}/bigint.a
 
 test: ${TEST_PATH}/run
