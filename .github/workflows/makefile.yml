@@ -15,6 +15,7 @@ jobs:
     - uses: actions/checkout@v3
       
     - name: Build program
+      run: mkdir build
       run: make
       
     - name: Run tests
