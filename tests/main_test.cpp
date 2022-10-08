@@ -3,3 +3,4 @@
 #include "doctest.h"
 
 #include "test_constructors.cpp"
+#include "test_castings.cpp"
