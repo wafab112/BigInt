@@ -33,27 +33,15 @@ ${BDIR}/extras.o: ${WDIR}/extras.cpp ${HEADERS}
 
 TEST_PATH := ./tests
 
-TESTS := test1 test2
-
-define create_test
-
-${1}: ${TEST_PATH}/${1}
-	$(shell ${TEST_PATH}/${1})
-
-${TEST_PATH}/${1}: ${TEST_PATH}/${1}.o ${TEST_PATH}/bigint.a
-	${CXX} ${FLAGS} -o ${TEST_PATH}/${1} ${TEST_PATH}/${1}.o ${TEST_PATH}/bigint.a
-
-${TEST_PATH}/${1}.o: ${TEST_PATH}/${1}.cpp
-	${CXX} ${FLAGS} -c ${TEST_PATH}/${1}.cpp -o ${TEST_PATH}/${1}.o
-
-endef
-
-$(foreach test_name,${TESTS},$(eval $(call create_test,${test_name})))
-
 ${TEST_PATH}/bigint.a: all
 	cp ${TARGET} ${TEST_PATH}
 	cp ${BDIR}/include/* ${TEST_PATH}
 
+${TEST_PATH}/run: ${TEST_PATH}/main_test.cpp
+	${CXX} ${FLAGS} -o $@ $< ${TEST_PATH}/bigint.a
+
+test: ${TEST_PATH}/run
+	${TEST_PATH}/run
 
 clean:
 	rm -r build/*
