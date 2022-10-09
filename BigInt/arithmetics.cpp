@@ -1,6 +1,8 @@
 #include "array_utils.h"
 #include "UBigInt.h"
 
+namespace wafab {
+
 // goal: not having any 0-most_significant_bytes (non 0-leading numbers)
 
 // provided goal is fullfilled, add fullfills the goal
@@ -470,4 +472,6 @@ UBigInt& UBigInt::operator<<=(const u64& rhs) {
 UBigInt operator<<(UBigInt lhs, const u64& rhs) {
 	lhs <<= rhs;
 	return lhs;
+}
+
 }

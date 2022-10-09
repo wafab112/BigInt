@@ -6,9 +6,9 @@
 
 // finding the lenght of the period, of the reciprical of n
 void period_length(const UBigInt& n, UBigInt& out) {
-	UBigInt rest{};
-	UBigInt t{ 1 };
-	UBigInt counter{};
+    wafab::UBigInt rest{};
+    wafab::UBigInt t{ 1 };
+    wafab::UBigInt counter{};
 
 	while (rest != 1) {
 
@@ -29,8 +29,8 @@ int main() {
 
 	// Just testing some random operations
 	auto t1 = std::chrono::high_resolution_clock::now();
-	UBigInt out{};
-	UBigInt in{ "100019\0" };
+    wafab::UBigInt out{};
+    wafab::UBigInt in{ "100019\0" };
 
 	period_length(in, out);
 	auto t2 = std::chrono::high_resolution_clock::now();

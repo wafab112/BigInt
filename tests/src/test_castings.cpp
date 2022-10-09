@@ -1,7 +1,7 @@
 TEST_CASE("Cast to u64") {
     u64 in = 12345678;
 
-    UBigInt i{ 12345678 };
+    wafab::UBigInt i{ 12345678 };
 
     u64 out{};
 
