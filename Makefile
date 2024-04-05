@@ -9,7 +9,7 @@ HEADERS := $(addprefix ${WDIR}/,UBigInt.h types.h array_utils.h)
 SOURCE_NAMES := arithmetics comparisons constructors extras
 OBJS := $(addprefix ${BDIR}/,$(addsuffix .o, ${SOURCE_NAMES}))
 
-TARGET = ${BDIR}/bigint.a
+TARGET = ${BDIR}/lib_bigint.a
 
 all: ${TARGET}
 	mkdir -p ${BDIR}/include
@@ -39,15 +39,15 @@ TEST_TARGET := ${TEST_PATH}/run
 
 TESTS = test_constructors.cpp
 
-${TEST_LIBS}/bigint.a: all
+${TEST_LIBS}/lib_bigint.a: all
 	mkdir -p ${TEST_LIBS}
 	cp ${TARGET} ${TEST_LIBS}
 	mkdir -p ${TEST_INCLUDES}
 	cp ${BDIR}/include/* ${TEST_INCLUDES}
 	cp doctest.h ${TEST_INCLUDES}
 
-${TEST_TARGET}: ${TEST_SRC}/main_test.cpp $(addprefix ${TEST_SRC}/,${TESTS}) ${TEST_LIBS}/bigint.a
-	${CXX} ${FLAGS} -o $@ $< ${TEST_LIBS}/bigint.a
+${TEST_TARGET}: ${TEST_SRC}/main_test.cpp $(addprefix ${TEST_SRC}/,${TESTS}) ${TEST_LIBS}/lib_bigint.a
+	${CXX} ${FLAGS} -o $@ $< ${TEST_LIBS}/lib_bigint.a
 
 test: ${TEST_TARGET}
 	${TEST_TARGET}
