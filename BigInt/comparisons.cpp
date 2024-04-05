@@ -1,5 +1,7 @@
 #include "UBigInt.h"
 
+namespace wafab {
+
 /// <summary>
 /// Performance (Let n:=max{length, rhs.lenght}):
 ///		- Best-case:	Numbers differ in least significant bytes => O(1)
@@ -171,4 +173,6 @@ bool operator>=(const UBigInt& lhs, const UBigInt& rhs) {
 
 bool operator>=(const UBigInt& lhs, const u64& rhs) {
 	return lhs.bigger_or_equal(rhs);
+}
+
 }

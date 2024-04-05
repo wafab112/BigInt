@@ -6,6 +6,8 @@
 #include <stdexcept>
 #include "types.h"
 
+namespace wafab {
+
 /// <summary>
 /// An unsigned integer, that has a variable number of bytes.
 /// </summary>
@@ -160,3 +162,4 @@ public:
 
 };
 
+}

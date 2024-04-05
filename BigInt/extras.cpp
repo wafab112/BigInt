@@ -2,6 +2,8 @@
 #include <string>
 #include <iostream>
 
+namespace wafab {
+
 bool isLittleEndian() {
 	volatile u32 i = 0x01234567;
 	return (*((u8*)(&i))) == 0x67;
@@ -171,4 +173,6 @@ UBigInt& UBigInt::operator=(const u64& rhs) {
 std::ostream& operator<<(std::ostream& os, UBigInt& number) {
 	os << number.to_string();
 	return os;
+}
+
 }

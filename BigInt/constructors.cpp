@@ -1,5 +1,7 @@
 #include "UBigInt.h"
 
+namespace wafab {
+
 UBigInt::UBigInt() {
 	length = 0;
 	bytes = nullptr;
@@ -162,4 +164,6 @@ UBigInt::UBigInt(u8* arr, u64 l) {
 
 UBigInt::~UBigInt() {
 	delete[] this->bytes;
+}
+
 }
